@@ -1,0 +1,2 @@
+# MCM Thermo
+ Fundraising Thermostat
