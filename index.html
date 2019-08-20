@@ -8,37 +8,57 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div id="content">
+    <div id="content">
         <div id="thermometer">
             <div class="track">
                 <div class="goal">
-                    <div class="amount"> 800 </div>
+                    <div class="amount">60000</div>
                 </div>
                 <div class="progress">
-                    <div class="amount">
-                        455 
-                    </div>
+                    <div class="amount">10000</div>
                 </div>
                 <div class="stop1">
-                    <div class="amount">$0 </div>
+                    <div class="amount">$12000</div>
                 </div>
                 <div class="stop2">
-                    <div class="amount">$200 </div>
+                    <div class="amount">$24000</div>
                 </div>
                 <div class="stop3">
-                    <div class="amount">$400 </div>
+                    <div class="amount">$36000</div>
                 </div>
                 <div class="stop4">
-                    <div class="amount">$600 </div>
+                    <div class="amount">$48000</div>
                 </div>
+                <span class="point c93"></span>
+                <span class="point c87"></span>
+                <span class="point c80"></span>
+                <span class="point c73"></span>
+                <span class="point c67"></span>
+                <span class="point c60"></span>
+                <span class="point c53"></span>
+                <span class="point c47"></span>
+                <span class="point c40"></span>
+                <span class="point c33"></span>
+                <span class="point c27"></span>
+                <span class="point c20"></span>
+                <span class="point c13"></span>
+                <span class="point c07"></span>
             </div>
-        </div>  
+        </div>
+        <div class="input">
+            <input type="number" name="number" id="num">
+            <button onclick="updater()">+</button>
+        </div>
     </div>
-
+    <div class="star-1"></div>
+    <div class="star-2"></div>
+    <div class="star-3"></div>
+    <div class="star-4"></div>
+    <div class="star-5"></div>
+    <div class="star-6"></div>
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-        //originally from http://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-money-in-javascript
         function formatCurrency(n, c, d, t) {
             "use strict";
 
@@ -55,18 +75,6 @@
             return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
         }
 
-        /**
-        * Thermometer Progress meter.
-        * This function will update the progress element in the "thermometer"
-        * to the updated percentage.
-        * If no parameters are passed in it will read them from the DOM
-        *
-        * @param {Number} goalAmount The Goal amount, this represents the 100% mark
-        * @param {Number} progressAmount The progress amount is the current amount
-        * @param {Boolean} animate Whether to animate the height or not
-        *
-        */
-
         function thermometer(goalAmount, progressAmount, animate) {
             "use strict";
 
@@ -77,21 +85,10 @@
 
             goalAmount = goalAmount || parseFloat( $goal.text() ),
             progressAmount = progressAmount || parseFloat( $progress.text() ),
-            percentageAmount =  Math.min( Math.round(progressAmount / goalAmount * 1000) / 10, 100); //make sure we have 1 decimal point
-
-            //let's format the numbers and put them back in the DOM
-            //show currency with decimal places
-            //$goal.find(".amount").text( "$" + formatCurrency( goalAmount ) );
-            //$progress.find(".amount").text( "$" + formatCurrency( progressAmount ) );
-            //show currency without decimnal places
+            percentageAmount =  Math.min( Math.round(progressAmount / goalAmount * 1000) / 10, 100);
             $goal.find(".amount").text( "$" + ( goalAmount ) );
             $progress.find(".amount").text( "$" + ( progressAmount ) );
-            //show not as curency
-            //$goal.find(".amount").text( goalAmount  );
-            //$progress.find(".amount").text( progressAmount  );
 
-
-            //let's set the progress indicator
             $progress.find(".amount").hide();
             if (animate !== false) {
                 $progress.animate({
@@ -106,18 +103,25 @@
                 });
                 $progress.find(".amount").fadeIn(500);
             }
-
         }
 
         $(document).ready(function(){
-            //call without the parameters to have it read from the DOM
             thermometer();
-            // or with parameters if you want to update it using JavaScript.
-            // you can update it live, and choose whether to show the animation
-            // (which you might not if the updates are relatively small)
-            //thermometer( 1000000, 425610, false );
         });
 
+        function updater() {
+            var x = document.getElementById("num").value;
+            if (x !== '') {
+                x = parseInt(x);
+                var current = document.querySelector(".progress").firstElementChild.innerText;
+                current = current.replace(/\D/, "");
+                current = parseInt(current);
+                document.querySelector(".progress").firstElementChild.innerText = x + current;
+                current = current + x;
+                thermometer(60000, current);
+            }
+            document.getElementById("num").value = '';
+        }
     </script>
 </body>
 </html>
