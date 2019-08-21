@@ -12,22 +12,22 @@
         <div id="thermometer">
             <div class="track">
                 <div class="goal">
-                    <div class="amount">60000</div>
+                    <div class="amount">20000</div>
                 </div>
                 <div class="progress">
-                    <div class="amount">10000</div>
+                    <div class="amount">0</div>
                 </div>
                 <div class="stop1">
-                    <div class="amount">$12000</div>
+                    <div class="amount">$4000</div>
                 </div>
                 <div class="stop2">
-                    <div class="amount">$24000</div>
+                    <div class="amount">$8000</div>
                 </div>
                 <div class="stop3">
-                    <div class="amount">$36000</div>
+                    <div class="amount">$12000</div>
                 </div>
                 <div class="stop4">
-                    <div class="amount">$48000</div>
+                    <div class="amount">$16000</div>
                 </div>
                 <span class="point c93"></span>
                 <span class="point c87"></span>
@@ -118,7 +118,7 @@
                 current = parseInt(current);
                 document.querySelector(".progress").firstElementChild.innerText = x + current;
                 current = current + x;
-                thermometer(60000, current);
+                thermometer(20000, current);
             }
             document.getElementById("num").value = '';
         }
