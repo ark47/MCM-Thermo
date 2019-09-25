@@ -52,16 +52,20 @@ img {
 #support {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 20% 40% 40%;
 }
 
 .paypal, .venmo, .credit,
-.cash, .ways {
+.cash, .mcm {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
+}
+
+.mcm {
+    grid-column: 1 / span 2;
 }
 
 #thermometer {
