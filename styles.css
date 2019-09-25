@@ -11,10 +11,57 @@ body {
     text-align: left;
 }
 
+h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+h3 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 1.1rem;
+}
+
+p {
+    padding: 0 1.1rem;
+    letter-spacing: .05rem;
+}
+
+.break {
+    margin: 0;
+}
+
+img {
+    width: 75%;
+}
+
+.credit img {
+    width: 40%;
+}
+
 #content {
     width: 50%;
     margin: 0 auto;
     position: relative;
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+#support {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+
+.paypal, .venmo, .credit,
+.cash, .ways {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 #thermometer {
@@ -30,7 +77,7 @@ body {
 }
 
 .track {
-    height: 67vh;
+    height: 68vh;
     width: 55px;
     display: flex;
     align-items: flex-end;
@@ -104,6 +151,7 @@ body {
     margin: 5vh auto;
     width: 100%;
     text-align: center;
+    grid-column: 2;
 }
 
 input {
